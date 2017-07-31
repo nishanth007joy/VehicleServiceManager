@@ -11,7 +11,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
+/**
+ * Vehicle registration API contract
+ * @author n.mathew.joy
+ *
+ */
 @Api()
 public interface VehicleRegistrationContract {
 	@ApiOperation(value ="Register Vehicle details")
