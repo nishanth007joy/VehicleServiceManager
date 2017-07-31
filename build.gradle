@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.5.RELEASE")
         classpath("org.flywaydb:flyway-gradle-plugin:3.2.1")
     }
 }
@@ -32,36 +32,12 @@ repositories {
 }
 
 dependencies {
-    // tag::jetty[]
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-tomcat",
-            "org.springframework.boot:spring-boot-starter-data-jpa",
-            "org.springframework.boot:spring-boot-starter-actuator",
-            "org.springframework.boot:spring-boot-starter-security",
-            "org.springframework.boot:spring-boot-starter-batch",
-            "org.springframework.cloud:spring-cloud-starter-config:1.0.3.RELEASE",
-            "org.springframework.cloud:spring-cloud-config-client:1.0.3.RELEASE",
-            "com.google.code.gson:gson",
-            "commons-lang:commons-lang:2.6",
-            "commons-collections:commons-collections",
-            "commons-codec:commons-codec:1.10",
-            "commons-io:commons-io:2.4",
-            "com.h2database:h2",
-            "org.hibernate:hibernate-core",
-            "org.hibernate:hibernate-entitymanager",
-            "org.webjars:datatables:1.10.5",
-            "org.webjars:datatables-plugins:ca6ec50",
-            "javax.servlet:jstl",
-            "org.apache.tomcat.embed:tomcat-embed-jasper",
-            "org.quartz-scheduler:quartz:2.2.1",
-            "org.jolokia:jolokia-core",
-            "org.aspectj:aspectjweaver",
-            "org.perf4j:perf4j:0.9.16",
-            "commons-jexl:commons-jexl:1.1",
-            "cglib:cglib:3.2.1",
-            "org.flywaydb:flyway-core",
-            )
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    
     testCompile("junit:junit",
                 "org.springframework:spring-test",
                 "org.springframework.boot:spring-boot-starter-test",
