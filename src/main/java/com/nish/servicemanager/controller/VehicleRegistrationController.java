@@ -1,0 +1,28 @@
+package com.nish.servicemanager.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.nish.servicemanager.bo.VehicleRegistrationBO;
+import com.nish.servicemanager.contract.VehicleRegistrationContract;
+@RestController
+@RequestMapping(path ="/api")
+public class VehicleRegistrationController implements VehicleRegistrationContract {
+	@RequestMapping(
+			path = "/registration",
+			method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE
+			)
+	@Override
+	public ResponseEntity<String> registerVehicle(@Valid @RequestBody VehicleRegistrationBO vehicleRegistrationBO) {
+		return null;
+	}
+
+}
