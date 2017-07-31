@@ -2,6 +2,7 @@ package com.nish.servicemanager.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,9 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nish.servicemanager.bo.VehicleRegistrationBO;
 import com.nish.servicemanager.contract.VehicleRegistrationContract;
+import com.nish.servicemanager.service.VehicleRegistrationService;
 @RestController
 @RequestMapping(path ="/api")
 public class VehicleRegistrationController implements VehicleRegistrationContract {
+	@Autowired
+	private VehicleRegistrationService vehicleRegistrationService;
 	@RequestMapping(
 			path = "/registration",
 			method = RequestMethod.POST,
@@ -22,7 +26,8 @@ public class VehicleRegistrationController implements VehicleRegistrationContrac
 			)
 	@Override
 	public ResponseEntity<String> registerVehicle(@Valid @RequestBody VehicleRegistrationBO vehicleRegistrationBO) {
-		return null;
+		vehicleRegistrationService.registerVehicleDetails(vehicleRegistrationBO);
+		return ResponseEntity.ok().build();
 	}
 
 }
